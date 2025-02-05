@@ -1,0 +1,6 @@
+sqlvol
+bin
+obj
+packages
+node_modules
+*.log

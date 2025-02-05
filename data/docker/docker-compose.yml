@@ -1,0 +1,14 @@
+services:
+  mssql:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "3st@eslaclave"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./sqlvol/data:/var/opt/mssql/data
+      - ./sqlvol/log:/var/opt/mssql/log
+      - ./sqlvol/secrets:/var/opt/mssql/secrets

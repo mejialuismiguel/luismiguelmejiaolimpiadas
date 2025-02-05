@@ -1,0 +1,62 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table country {
+  id int [primary key]  // Unique identifier for the country
+  name varchar(100)         // Full name of the country
+  code char(3) [unique] // ISO 3166-1 alpha-3 country code (e.g., USA, ESP, ARG)
+}
+
+Table weight_category {
+  id int [primary key]   // Unique identifier for the weight category
+  name varchar(50)          // Name of the weight category (e.g., "Lightweight", "Heavyweight")
+  min_weight float [not null, note: "CHECK (min_weight > 0)"]  // Minimum weight in kg
+  max_weight float [not null, note: "CHECK (min_weight > 0)"]// Maximum weight in kg
+  gender char(1) [not null, note: "CHECK (gender IN ('M', 'F'))"]     // 'M' for men, 'F' for women (representing the gender of the category)
+}
+
+Table athlete {
+  id int [primary key, increment]  // Unique identifier for the athlete
+  dni varchar(20) // unique identification for athlete
+  first_name varchar(50)
+  last_name varchar(50)
+  birth_date date
+  gender char(1) [not null, note: "CHECK (gender IN ('M', 'F'))"] // 'M' for men, 'F' for women (representing the gender of the category)
+  country_id int  // Foreign key referencing country.id
+  weight_category_id int // Foreign key referencing weight_category.id
+
+  Indexes {
+    (dni) [unique]
+  }
+}
+
+Table tournament {
+  id int [primary key, increment]  // Unique identifier for the tournament
+  name varchar(50)         // Tournament name
+  location varchar(100)      // Location where the tournament takes place
+  start_date date [not null, note: "CHECK (start_date < end_date)"] // Start date of the tournament
+  end_date date         // End date of the tournament
+}
+
+Table tournament_participation {
+  id int [primary key, increment]  
+  athlete_id int  // Foreign key referencing athlete.id
+  tournament_id int // Foreign key referencing tournament.id
+  weight_category_id int // Foreign key referencing weight_category.id (category of the athlete in the tournament)
+}
+
+Table attempt {
+  id int [primary key, increment]  
+  participation_id int // Foreign key referencing tournament_participation.id
+  attempt_number int   // Attempt number (1, 2, or 3)
+  type varchar(10) // "snatch" or "clean_jerk"
+  weight_lifted float  // Weight lifted in kg
+  success bit [not null, note: "CHECK (success IN (0, 1))"]      // Whether the attempt was successful
+}
+
+Ref: athlete.country_id > country.id
+Ref: athlete.weight_category_id > weight_category.id
+Ref: tournament_participation.athlete_id > athlete.id
+Ref: tournament_participation.tournament_id > tournament.id
+Ref: tournament_participation.weight_category_id > weight_category.id
+Ref: attempt.participation_id > tournament_participation.id
