@@ -3063,3 +3063,89 @@ System.InvalidCastException: Unable to cast object of type 'System.Boolean' to t
 2025-02-04 22:54:24.071 -05:00 [Information] Executed endpoint '"AthleteApi.Controllers.TournamentParticipationController.GetTournamentParticipations (AthleteApi)"'
 2025-02-04 22:54:24.071 -05:00 [Information] HTTP "GET" "/api/TournamentParticipation" responded 200 in 10.8679 ms
 2025-02-04 22:54:24.071 -05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5000""""/api/TournamentParticipation""?athleteName=Luis&pageNumber=1&pageSize=10" - 200 null "application/json; charset=utf-8" 12.3888ms
+2025-02-04 23:33:19.633 -05:00 [Information] User profile is available. Using '"/Users/luismiguelmejia/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest.
+2025-02-04 23:33:19.727 -05:00 [Information] Now listening on: "http://localhost:5000"
+2025-02-04 23:33:19.728 -05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-02-04 23:33:19.728 -05:00 [Information] Hosting environment: "Production"
+2025-02-04 23:33:19.728 -05:00 [Information] Content root path: "/Users/luismiguelmejia/Proyectos/LuisMiguelMejiaOlimpiadas/apis/c#/AthleteApi/AthleteApi"
+2025-02-04 23:34:02.881 -05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5000""""/index.html""" - null null
+2025-02-04 23:34:02.885 -05:00 [Warning] Failed to determine the https port for redirect.
+2025-02-04 23:34:02.976 -05:00 [Information] HTTP "GET" "/index.html" responded 200 in 48.2080 ms
+2025-02-04 23:34:02.978 -05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5000""""/index.html""" - 200 null "text/html;charset=utf-8" 97.3262ms
+2025-02-04 23:34:03.064 -05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5000""""/swagger/v1/swagger.json""" - null null
+2025-02-04 23:34:03.107 -05:00 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 42.9339 ms
+2025-02-04 23:34:03.108 -05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5000""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 44.0975ms
+2025-02-04 23:34:11.075 -05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Auth/login""" - "application/json" 50
+2025-02-04 23:34:11.086 -05:00 [Information] Executing endpoint '"AthleteApi.Controllers.AuthController.Login (AthleteApi)"'
+2025-02-04 23:34:11.112 -05:00 [Information] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Login(AthleteApi.Models.UserLogin)" on controller "AthleteApi.Controllers.AuthController" ("AthleteApi").
+2025-02-04 23:34:11.143 -05:00 [Information] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'.
+2025-02-04 23:34:11.152 -05:00 [Information] Executed action "AthleteApi.Controllers.AuthController.Login (AthleteApi)" in 38.1281ms
+2025-02-04 23:34:11.152 -05:00 [Information] Executed endpoint '"AthleteApi.Controllers.AuthController.Login (AthleteApi)"'
+2025-02-04 23:34:11.152 -05:00 [Information] HTTP "POST" "/api/Auth/login" responded 200 in 70.2396 ms
+2025-02-04 23:34:11.152 -05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Auth/login""" - 200 null "application/json; charset=utf-8" 77.1887ms
+2025-02-04 23:34:57.704 -05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Athlete""" - "application/json" 176
+2025-02-04 23:34:57.727 -05:00 [Information] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.Text.Json.JsonReaderException: '0xC8' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at Microsoft.IdentityModel.Tokens.Json.JsonSerializerPrimitives.IsReaderAtTokenType(Utf8JsonReader& reader, JsonTokenType tokenType, Boolean advanceReader)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateHeaderClaimSet(Byte[] bytes, Int32 length)
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode[T](String input, Int32 offset, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(String rawString, Int32 startIndex, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-02-04 23:34:57.781 -05:00 [Information] "Bearer" was not authenticated. Failure message: "IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'."
+2025-02-04 23:34:57.783 -05:00 [Information] Authorization failed. "These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user."
+2025-02-04 23:34:57.785 -05:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2025-02-04 23:34:57.786 -05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Athlete""" - 401 0 null 81.6007ms
+2025-02-04 23:35:10.142 -05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Auth/login""" - "application/json" 50
+2025-02-04 23:35:10.144 -05:00 [Information] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.Text.Json.JsonReaderException: '0xC8' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at Microsoft.IdentityModel.Tokens.Json.JsonSerializerPrimitives.IsReaderAtTokenType(Utf8JsonReader& reader, JsonTokenType tokenType, Boolean advanceReader)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateHeaderClaimSet(Byte[] bytes, Int32 length)
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode[T](String input, Int32 offset, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(String rawString, Int32 startIndex, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-02-04 23:35:10.145 -05:00 [Information] "Bearer" was not authenticated. Failure message: "IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'."
+2025-02-04 23:35:10.146 -05:00 [Information] Executing endpoint '"AthleteApi.Controllers.AuthController.Login (AthleteApi)"'
+2025-02-04 23:35:10.146 -05:00 [Information] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Login(AthleteApi.Models.UserLogin)" on controller "AthleteApi.Controllers.AuthController" ("AthleteApi").
+2025-02-04 23:35:10.149 -05:00 [Information] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'.
+2025-02-04 23:35:10.150 -05:00 [Information] Executed action "AthleteApi.Controllers.AuthController.Login (AthleteApi)" in 3.7542ms
+2025-02-04 23:35:10.150 -05:00 [Information] Executed endpoint '"AthleteApi.Controllers.AuthController.Login (AthleteApi)"'
+2025-02-04 23:35:10.150 -05:00 [Information] HTTP "POST" "/api/Auth/login" responded 200 in 5.0914 ms
+2025-02-04 23:35:10.151 -05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Auth/login""" - 200 null "application/json; charset=utf-8" 8.7142ms
+2025-02-04 23:35:27.272 -05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Athlete""" - "application/json" 176
+2025-02-04 23:35:27.302 -05:00 [Information] Executing endpoint '"AthleteApi.Controllers.AthleteController.CreateAthlete (AthleteApi)"'
+2025-02-04 23:35:27.306 -05:00 [Information] Route matched with "{action = \"CreateAthlete\", controller = \"Athlete\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateAthlete(AthleteApi.Models.Athlete)" on controller "AthleteApi.Controllers.AthleteController" ("AthleteApi").
+2025-02-04 23:35:27.489 -05:00 [Information] Executing "OkObjectResult", writing value of type '"AthleteApi.Models.ApiResponse"'.
+2025-02-04 23:35:27.490 -05:00 [Information] Executed action "AthleteApi.Controllers.AthleteController.CreateAthlete (AthleteApi)" in 184.177ms
+2025-02-04 23:35:27.490 -05:00 [Information] Executed endpoint '"AthleteApi.Controllers.AthleteController.CreateAthlete (AthleteApi)"'
+2025-02-04 23:35:27.491 -05:00 [Information] HTTP "POST" "/api/Athlete" responded 200 in 188.9871 ms
+2025-02-04 23:35:27.491 -05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5000""""/api/Athlete""" - 200 null "application/json; charset=utf-8" 219.1294ms
+2025-02-04 23:35:50.207 -05:00 [Information] Application is shutting down...
