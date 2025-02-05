@@ -30,7 +30,7 @@ namespace AthleteApi.Services
             }
         }
 
-        public async Task<IEnumerable<TournamentParticipation>> GetParticipants(int pageNumber, int pageSize)
+        public async Task<IEnumerable<TournamentParticipation>> GetParticipants(int? tournamentId, string? athleteName, int pageNumber, int pageSize)
         {
             var participants = new List<TournamentParticipation>();
 
@@ -39,6 +39,8 @@ namespace AthleteApi.Services
                 using (SqlCommand cmd = new SqlCommand("sp_getParticipants", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TournamentId", tournamentId.HasValue ? (object)tournamentId.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AthleteName", athleteName ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
                     cmd.Parameters.AddWithValue("@PageSize", pageSize);
 

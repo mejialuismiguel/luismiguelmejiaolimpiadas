@@ -35,16 +35,17 @@ namespace AthleteApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetParticipants([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public async Task<IActionResult> GetTournamentParticipations(
+            [FromQuery] int? tournamentId = null, [FromQuery] string? athleteName = null, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             try
             {
-                var participants = await _tournamentParticipationService.GetParticipants(pageNumber, pageSize);
-                return Ok(participants);
+                var participations = await _tournamentParticipationService.GetParticipants(tournamentId, athleteName, pageNumber, pageSize);
+                return Ok(participations);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al obtener los participantes");
+                _logger.LogError(ex, "Error al obtener las participaciones en el torneo");
                 return StatusCode(500, new ApiResponse($"Internal server error: {ex.Message}", 500));
             }
         }

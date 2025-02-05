@@ -17,7 +17,7 @@ namespace AthleteApi.Services
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_addAttempt", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_addattempt", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ParticipationId", attempt.ParticipationId);
@@ -38,7 +38,7 @@ namespace AthleteApi.Services
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_getAttemptsByTournament", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_getattemptsbytournament", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TournamentId", tournamentId.HasValue ? (object)tournamentId.Value : DBNull.Value);
@@ -58,7 +58,7 @@ namespace AthleteApi.Services
                                 AttemptNumber = reader.GetInt32(2),
                                 Type = reader.GetString(3),
                                 WeightLifted = reader.GetDouble(4),
-                                Success = reader.GetBoolean(5),
+                                Success = reader.GetBoolean(5) ? 1 : 0,
                                 TournamentName = reader.GetString(6),
                                 TournamentId = reader.GetInt32(7) 
                             };

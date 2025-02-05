@@ -7,6 +7,6 @@ namespace AthleteApi.Services
     public interface ITournamentParticipationService
     {
         Task AddParticipant(TournamentParticipation participation);
-        Task<IEnumerable<TournamentParticipation>> GetParticipants(int pageNumber, int pageSize);
+        Task<IEnumerable<TournamentParticipation>> GetParticipants(int? tournamentId, string? athleteName, int pageNumber, int pageSize);
     }
 }

@@ -7,7 +7,7 @@ namespace AthleteApi.Models
         public int AttemptNumber { get; set; }
         public string? Type { get; set; }
         public double WeightLifted { get; set; }
-        public bool Success { get; set; }
+        public int Success { get; set; }
         public string? TournamentName { get; set; } 
         public int TournamentId { get; set; }
     }

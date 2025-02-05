@@ -23,22 +23,14 @@ BEGIN
         END
         ELSE
         BEGIN
-            BEGIN TRY
-                THROW 50000, 'El atleta ya está registrado en este torneo.', 1;
-            END TRY
-            BEGIN CATCH
-                RETURN;
-            END CATCH
+            RAISERROR('El atleta ya está registrado en este torneo.', 16, 1)
+            RETURN;
         END
     END
     ELSE
     BEGIN
-        BEGIN TRY
-            THROW 50000, 'Datos inválidos para atleta, torneo o categoría de peso.', 1;
-        END TRY
-        BEGIN CATCH
-            RETURN;
-        END CATCH
+        RAISERROR('Datos inválidos para atleta, torneo o categoría de peso.', 16, 1)
+        RETURN;
     END
 END;
 
